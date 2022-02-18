@@ -1,0 +1,16 @@
+service: aws-serverless-java-template
+
+provider:
+  name: aws
+  runtime: java8
+
+package:
+  artifact: build/distributions/aws-serverless-java-template.zip
+
+functions:
+  currentTime:
+    handler: template.Handler::handleRequest
+    events:
+      - httpApi:
+          path: /time
+          method: get
